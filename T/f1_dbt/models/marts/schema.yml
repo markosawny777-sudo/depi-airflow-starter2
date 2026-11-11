@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: dim_drivers
+    columns:
+      - name: driver_key
+        tests: [unique, not_null]
+  - name: dim_teams
+    columns:
+      - name: team_key
+        tests: [unique, not_null]
+  - name: dim_races
+    columns:
+      - name: race_key
+        tests: [unique, not_null]
+  - name: fact_results
+    columns:
+      - name: race_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_races')
+                field: race_key
+      - name: driver_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_drivers')
+                field: driver_key
