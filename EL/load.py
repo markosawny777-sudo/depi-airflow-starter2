@@ -47,12 +47,8 @@ def saving(races, drivers, results):
             pts                       VARCHAR(10)
         );
     ''')
-        ''')
 
     cur.execute('TRUNCATE raw_races, raw_drivers, raw_results;')
-
-    # 2. Insert the data as it is
-    print('saving...')
 
     # 2. Insert the data as it is
     print('saving...')
